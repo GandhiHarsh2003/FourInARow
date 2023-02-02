@@ -1,5 +1,9 @@
 import java.util.*
-
+/**
+ * TicTacToe class implements the interface
+ * @author Harsh Gandhi
+ * @date 2/2/2023
+ */
 
 val FIR_board = FourInARow()
 
