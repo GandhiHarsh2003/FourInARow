@@ -11,14 +11,18 @@ fun main() {
     //game loop
     do {
         FIR_board.printBoard()
+        // until the player provides a valid position keep running the loop.
         var validPosition: Boolean = false
         while (validPosition != true) {
             println("What's your move? Enter q to quit")
+            // read the input.
             userInput = readln()
+            // if the user inputs 1 then end the game.
             if (userInput == "q") {
                 currentState = GameConstants.TIE
                 break;
             }
+            // convert the cell number to row and column number. If it is not out of bounds then call the setMove method.
             var playerMove: Int = Integer.parseInt(userInput)
             val row: Int = playerMove / GameConstants.ROWS
             val column: Int = playerMove % GameConstants.COLS
@@ -29,7 +33,7 @@ fun main() {
                 validPosition = true
             }
         }
-        // check for winner after the player move
+        // check for winner after the player move. If blue or red won or if is a tie then end the game.
         var winner: Int = FIR_board.checkForWinner()
         if (winner == GameConstants.BLUE_WON) {
             println("player 1 is winner")
@@ -48,11 +52,11 @@ fun main() {
             break
         }
 
-        // computer move
+        // call for computer move
         var computerMove: Int = FIR_board.computerMove
         FIR_board.setMove(2, computerMove)
 
-        // check for winner again after the move of computer
+        // check for winner after the computer move. If blue or red won or if is a tie then end the game.
         winner = FIR_board.checkForWinner()
         if (winner == GameConstants.BLUE_WON) {
             println("You are the winner!!!")
